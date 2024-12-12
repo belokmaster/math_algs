@@ -7,49 +7,71 @@ import (
 	"os"
 	"strconv"
 	"strings"
-	"time"
 )
 
-func main() {
-	// Считываем строку с ввода
+// Функция для чтения целого числа с ввода
+func readIntInput(prompt string) (int, error) {
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Print("Введите команду: ")
+	fmt.Print(prompt)
 	input, _ := reader.ReadString('\n')
 	input = strings.TrimSpace(input) // Убираем лишние пробелы и символы новой строки
 
-	// Преобразуем строку в целое число
 	n, err := strconv.Atoi(input)
 	if err != nil {
-		fmt.Println("Ошибка при преобразовании строки в число:", err)
-		return
+		return 0, fmt.Errorf("ошибка при преобразовании строки в число: %v", err)
 	}
 
-	// Используем switch case для выбора действия
-	switch input {
-	case "1":
-		// После выбора команды 1, запрашиваем новое значение для n
-		fmt.Print("Введите значение для n: ")
-		input, _ := reader.ReadString('\n')
-		input = strings.TrimSpace(input) // Убираем лишние пробелы и символы новой строки
+	return n, nil
+}
 
-		// Преобразуем строку в целое число
-		n, err = strconv.Atoi(input)
+func main() {
+	// Читаем команду с ввода
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Введите команду: ")
+	command, _ := reader.ReadString('\n')
+	command = strings.TrimSpace(command) // Убираем лишние пробелы и символы новой строки
+
+	var n int
+	var err error
+
+	// Обработка команд с помощью switch
+	switch command {
+	case "1":
+		// Чтение значения для n
+		n, err = readIntInput("Введите значение для n: ")
 		if err != nil {
-			fmt.Println("Ошибка при преобразовании строки в число:", err)
+			fmt.Println(err)
 			return
 		}
-
-		// Выполняем функцию SieveOfEratosthenes для числа n
-		// Сохраняем текущее время перед началом выполнения алгоритма
-		start := time.Now()
-		primes := ceil_algs.SieveOfEratosthenes(n)
-		duration := time.Since(start)
-		// Выводим время выполнения
-		fmt.Printf("Время выполнения: %v\n", duration)
-
-		// Также можно вывести количество простых чисел для проверки
-		fmt.Printf("Количество простых чисел: %d\n", len(primes))
-		fmt.Printf("Простые числа до %d: %v\n", n, primes)
+		// Выполнение алгоритма "Решето Эратосфена"
+		ceil_algs.ExecuteSieveOfEratosthenes(n)
+	case "2":
+		// Чтение значения для n
+		n, err = readIntInput("Введите значение для n: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма "Метод пробных делителей"
+		ceil_algs.ExecuteTrialDivision(n)
+	case "3":
+		// Чтение значения для n
+		n, err = readIntInput("Введите значение для n: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма "Метод факторизации Ферма"
+		ceil_algs.ExecuteFermatFactorization(n)
+	case "4":
+		// Чтение значения для n
+		n, err = readIntInput("Введите значение для n: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма "итерационная формула Герона"
+		ceil_algs.ExecuteHeronSqrt(n)
 	default:
 		fmt.Println("Неизвестная команда")
 	}

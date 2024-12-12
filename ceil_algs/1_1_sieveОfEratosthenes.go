@@ -1,6 +1,12 @@
 package ceil_algs
 
-import "math"
+import (
+	"fmt"
+	"math"
+	"time"
+)
+
+// Решето Эратосфена. Получение всех простых чисел до вводимого значения n.
 
 // SieveOfEratosthenes возвращает срез, содержащий все простые числа до n
 func SieveOfEratosthenes(n int) []int {
@@ -35,4 +41,15 @@ func SieveOfEratosthenes(n int) []int {
 	}
 
 	return primes
+}
+
+// Функция для выполнения алгоритма "Решето Эратосфена"
+func ExecuteSieveOfEratosthenes(n int) {
+	start := time.Now()
+	primes := SieveOfEratosthenes(n)
+	duration := time.Since(start)
+
+	fmt.Printf("1. Время выполнения: %v\n", duration)
+	fmt.Printf("2. Количество простых чисел до %d: %d\n", n, len(primes))
+	fmt.Printf("3. Простые числа до %d: %v\n", n, primes)
 }
