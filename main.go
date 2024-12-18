@@ -45,10 +45,8 @@ func main() {
 	var n int
 	var err error
 
-	// Обработка команд с помощью switch
 	switch command {
 	case "1":
-		// Чтение значения для n
 		n, err = readIntInput("Введите значение для n: ")
 		if err != nil {
 			fmt.Println(err)
@@ -57,7 +55,6 @@ func main() {
 		// Выполнение алгоритма "Решето Эратосфена"
 		ceil_algs.ExecuteSieveOfEratosthenes(n)
 	case "2":
-		// Чтение значения для n
 		n, err = readIntInput("Введите значение для n: ")
 		if err != nil {
 			fmt.Println(err)
@@ -66,7 +63,6 @@ func main() {
 		// Выполнение алгоритма "Метод пробных делителей"
 		ceil_algs.ExecuteTrialDivision(n)
 	case "3":
-		// Чтение значения для n
 		n, err = readIntInput("Введите значение для n: ")
 		if err != nil {
 			fmt.Println(err)
@@ -75,7 +71,6 @@ func main() {
 		// Выполнение алгоритма "Метод факторизации Ферма"
 		ceil_algs.ExecuteFermatFactorization(n)
 	case "4":
-		// Чтение значения для n
 		n, err = readIntInput("Введите значение для n: ")
 		if err != nil {
 			fmt.Println(err)
@@ -84,28 +79,40 @@ func main() {
 		// Выполнение алгоритма "итерационная формула Герона"
 		ceil_algs.ExecuteHeronSqrt(n)
 	case "5":
-		// Чтение первого числа
 		num1, err := readStringInput("Введите первое число: ")
 		if err != nil {
 			fmt.Println(err)
 			return
 		}
-
-		// Чтение второго числа
 		num2, err := readStringInput("Введите второе число: ")
 		if err != nil {
 			fmt.Println(err)
 			return
 		}
-
-		// Чтение значения для p
 		p, err := readIntInput("Введите основание системы счисления (p): ")
 		if err != nil {
 			fmt.Println(err)
 			return
 		}
-
 		// Выполнение алгоритма "сложение двух чисел в с.с. p"
 		ceil_algs.ExecuteAddPBaseNumbers(num1, num2, p)
+	case "6":
+		num1, err := readStringInput("Введите первое число: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		num2, err := readIntInput("Введите второе число: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		p, err := readIntInput("Введите основание системы счисления (p): ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма "умножение числа на цифру в с.с. p"
+		ceil_algs.ExecuteMultiplyPBaseNumberByDigit(num1, num2, p)
 	}
 }
