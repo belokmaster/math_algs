@@ -24,6 +24,21 @@ func readIntInput(prompt string) (int, error) {
 	return n, nil
 }
 
+// Функция для чтения вещественного числа с ввода
+func readFloatInput(prompt string) (float64, error) {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print(prompt)
+	input, _ := reader.ReadString('\n')
+	input = strings.TrimSpace(input) // Убираем лишние пробелы и символы новой строки
+
+	f, err := strconv.ParseFloat(input, 64)
+	if err != nil {
+		return 0, fmt.Errorf("ошибка при преобразовании строки в число: %v", err)
+	}
+
+	return f, nil
+}
+
 // Функция для чтения строки ввода
 func readStringInput(prompt string) (string, error) {
 	reader := bufio.NewReader(os.Stdin)
@@ -96,6 +111,24 @@ func main() {
 		}
 		// Выполнение алгоритма "сложение двух чисел в с.с. p"
 		ceil_algs.ExecuteAddPBaseNumbers(num1, num2, p)
+	case "5.1":
+		num1, err := readStringInput("Введите первое число: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		num2, err := readStringInput("Введите второе число: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		p, err := readIntInput("Введите основание системы счисления (p): ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма "вычитание двух чисел в с.с. p"
+		ceil_algs.ExecuteSubPBaseNumbers(num1, num2, p)
 	case "6":
 		num1, err := readStringInput("Введите первое число: ")
 		if err != nil {
