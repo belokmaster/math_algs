@@ -24,6 +24,17 @@ func readIntInput(prompt string) (int, error) {
 	return n, nil
 }
 
+// Функция для чтения строки ввода
+func readStringInput(prompt string) (string, error) {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print(prompt)
+	text, err := reader.ReadString('\n')
+	if err != nil {
+		return "", err
+	}
+	return strings.TrimSpace(text), nil
+}
+
 func main() {
 	// Читаем команду с ввода
 	reader := bufio.NewReader(os.Stdin)
@@ -72,7 +83,29 @@ func main() {
 		}
 		// Выполнение алгоритма "итерационная формула Герона"
 		ceil_algs.ExecuteHeronSqrt(n)
-	default:
-		fmt.Println("Неизвестная команда")
+	case "5":
+		// Чтение первого числа
+		num1, err := readStringInput("Введите первое число: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		// Чтение второго числа
+		num2, err := readStringInput("Введите второе число: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		// Чтение значения для p
+		p, err := readIntInput("Введите основание системы счисления (p): ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		// Выполнение алгоритма "сложение двух чисел в с.с. p"
+		ceil_algs.ExecuteAddPBaseNumbers(num1, num2, p)
 	}
 }
