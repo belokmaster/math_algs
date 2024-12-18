@@ -24,6 +24,7 @@ func readIntInput(prompt string) (int, error) {
 	return n, nil
 }
 
+/*
 // Функция для чтения вещественного числа с ввода
 func readFloatInput(prompt string) (float64, error) {
 	reader := bufio.NewReader(os.Stdin)
@@ -38,6 +39,7 @@ func readFloatInput(prompt string) (float64, error) {
 
 	return f, nil
 }
+*/
 
 // Функция для чтения строки ввода
 func readStringInput(prompt string) (string, error) {
@@ -183,5 +185,23 @@ func main() {
 		}
 		// Выполнение алгоритма "умножение чисел в с.с. p"
 		ceil_algs.ExecuteMulPBaseNumbers(num1, num2, p)
+	case "9":
+		num1, err := readStringInput("Введите число: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		p, err := readIntInput("Введите основание системы счисления (p): ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		q, err := readIntInput("Введите основание системы счисления (q): ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма "преобразования числа из системы счисления с основанием p в систему с основанием q"
+		ceil_algs.ExecutePBaseToQBase(num1, p, q)
 	}
 }
