@@ -6,7 +6,7 @@ import (
 )
 
 // Функция для умножения числа в произвольной системе счисления на цифру
-func MultiplyPBaseNumberByDigit(num string, digit int, p int) string {
+func MulPBaseNumberByDigit(num string, digit int, p int) string {
 	// Создаем срез для хранения результата, длина которого будет на 1 больше, чем у исходных чисел (для переноса)
 	result := make([]byte, len(num)+1)
 	carry := 0 // Переменная для хранения переноса
@@ -39,9 +39,9 @@ func MultiplyPBaseNumberByDigit(num string, digit int, p int) string {
 }
 
 // Функция для выполнения алгоритма "умножение числа на цифру в с.с. p"
-func ExecuteMultiplyPBaseNumberByDigit(num string, digit int, p int) {
+func ExecuteMulPBaseNumberByDigit(num string, digit int, p int) {
 	start := time.Now()
-	result := MultiplyPBaseNumberByDigit(num, digit, p)
+	result := MulPBaseNumberByDigit(num, digit, p)
 	duration := time.Since(start)
 
 	fmt.Printf("1. Время выполнения: %v\n", duration)

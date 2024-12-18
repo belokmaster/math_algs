@@ -113,6 +113,42 @@ func main() {
 			return
 		}
 		// Выполнение алгоритма "умножение числа на цифру в с.с. p"
-		ceil_algs.ExecuteMultiplyPBaseNumberByDigit(num1, num2, p)
+		ceil_algs.ExecuteMulPBaseNumberByDigit(num1, num2, p)
+	case "7":
+		num, err := readStringInput("Введите число для сдвига: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		k, err := readIntInput("Введите количество разрядов для сдвига: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		p, err := readIntInput("Введите основание системы счисления (p): ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма "сдвиг числа влево на k разрядов в с.с. p"
+		ceil_algs.ExecuteShiftPBaseNumberLeft(num, k, p)
+	case "8":
+		num1, err := readStringInput("Введите первое число: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		num2, err := readStringInput("Введите второе число: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		p, err := readIntInput("Введите основание системы счисления (p): ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма "умножение чисел в с.с. p"
+		ceil_algs.ExecuteMulPBaseNumbers(num1, num2, p)
 	}
 }
