@@ -203,5 +203,31 @@ func main() {
 		}
 		// Выполнение алгоритма "преобразования числа из системы счисления с основанием p в систему с основанием q"
 		ceil_algs.ExecutePBaseToQBase(num1, p, q)
+	case "11":
+		num1, err := readIntInput("Введите число для возведения в степень: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		num2, err := readIntInput("Введите число для степени: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма "возведения числа в натуральную степень"
+		ceil_algs.ExecutePow(num1, num2)
+	case "12":
+		num1, err := readIntInput("Введите число для возведения в степень: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		num2, err := readIntInput("Введите число для степени: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма "возведения числа в степень методом быстрого возведения в степень"
+		ceil_algs.ExecutePow(num1, num2)
 	}
 }
