@@ -229,5 +229,44 @@ func main() {
 		}
 		// Выполнение алгоритма "возведения числа в степень методом быстрого возведения в степень"
 		ceil_algs.ExecutePow(num1, num2)
+	case "13":
+		num1, err := readIntInput("Введите первое число: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		num2, err := readIntInput("Введите второе число: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение классического алгоритма Евклида
+		ceil_algs.ExecuteGcdClassic(num1, num2)
+	case "14":
+		num1, err := readIntInput("Введите первое число: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		num2, err := readIntInput("Введите второе число: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение бинарного алгоритма Евклида
+		ceil_algs.ExecuteGcdBinary(num1, num2)
+	case "15":
+		num1, err := readIntInput("Введите первое число: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		num2, err := readIntInput("Введите второе число: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение обобщенного алгоритма Евклида
+		ceil_algs.ExecuteGcdExtendedc(num1, num2)
 	}
 }
