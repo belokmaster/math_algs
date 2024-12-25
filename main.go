@@ -71,6 +71,14 @@ func main() {
 		}
 		// Выполнение алгоритма "Решето Эратосфена"
 		ceil_algs.ExecuteSieveOfEratosthenes(n)
+	case "1.1":
+		n, err = readIntInput("Введите значение для n: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма "Решето Эратосфена"
+		ceil_algs.ExecuteSimpleSieveOfEratosthenes(n)
 	case "2":
 		n, err = readIntInput("Введите значение для n: ")
 		if err != nil {
