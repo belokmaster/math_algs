@@ -24,6 +24,27 @@ func readIntInput(prompt string) (int, error) {
 	return n, nil
 }
 
+// Функция для чтения ввода и преобразования строки коэффициентов в срез целых чисел
+func readPolynomialInput(prompt string) ([]int, error) {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print(prompt)
+	input, _ := reader.ReadString('\n')
+	input = strings.TrimSpace(input) // Убираем лишние пробелы и символы новой строки
+
+	// Разделяем строку по пробелам и конвертируем в срез целых чисел
+	coeffStrs := strings.Split(input, " ")
+	coeffs := make([]int, len(coeffStrs))
+	for i, coeffStr := range coeffStrs {
+		n, err := strconv.Atoi(coeffStr)
+		if err != nil {
+			return nil, fmt.Errorf("ошибка при преобразовании строки в число: %v", err)
+		}
+		coeffs[i] = n
+	}
+
+	return coeffs, nil
+}
+
 /*
 // Функция для чтения вещественного числа с ввода
 func readFloatInput(prompt string) (float64, error) {
@@ -276,5 +297,67 @@ func main() {
 		}
 		// Выполнение обобщенного алгоритма Евклида
 		ceil_algs.ExecuteGcdExtendedc(num1, num2)
+	case "16":
+		a, err := readIntInput("Введите коэффициент a: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		b, err := readIntInput("Введите коэффициент b: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		c, err := readIntInput("Введите коэффициент c: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма решения диофантового уравнения
+		ceil_algs.ExecuteSolveDiophantine(a, b, c)
+	case "17":
+		a, err := readIntInput("Введите коэффициент a: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		b, err := readIntInput("Введите коэффициент b: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		m, err := readIntInput("Введите коэффициент m: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение линейного сравнения
+		ceil_algs.ExecuteSolveLinearCongruence(a, b, m)
+	case "18":
+		a, err := readPolynomialInput("Введите первый полином: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		b, err := readPolynomialInput("Введите второй полином: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма сложения двух полиномов
+		ceil_algs.ExecuteAddPolynomials(a, b)
+	case "18.1":
+		a, err := readPolynomialInput("Введите первый полином: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		b, err := readPolynomialInput("Введите второй полином: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма вычитания двух полиномов
+		ceil_algs.ExecuteSubtractPolynomials(a, b)
 	}
 }
