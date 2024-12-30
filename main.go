@@ -359,5 +359,31 @@ func main() {
 		}
 		// Выполнение алгоритма вычитания двух полиномов
 		ceil_algs.ExecuteSubtractPolynomials(a, b)
+	case "19":
+		a, err := readPolynomialInput("Введите первый полином: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		b, err := readPolynomialInput("Введите второй полином: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма умножения двух полиномов
+		ceil_algs.ExecuteMultiplyPolynomials(a, b)
+	case "20":
+		a, err := readPolynomialInput("Введите первый полином: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		b, err := readPolynomialInput("Введите второй полином: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма умножения двух полиномов
+		ceil_algs.ExecuteDividePolynomials(a, b)
 	}
 }

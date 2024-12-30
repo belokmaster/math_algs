@@ -50,7 +50,7 @@ func PBaseToQBase(num string, p, q int) string {
 	return string(result)
 }
 
-// Пример функции для выполнения перевода с замером времени
+// Пример функции для выполнения перевода
 func ExecutePBaseToQBase(num string, p, q int) {
 	start := time.Now()
 	result := PBaseToQBase(num, p, q)
