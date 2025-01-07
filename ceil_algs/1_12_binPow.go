@@ -23,8 +23,16 @@ import (
 	Подробный пример из дебагера ниже.
 */
 
-func BinPow(base, exponent int) int {
-	result := 1
+func BinPow(base float64, exponent int) float64 {
+	if exponent == 0 {
+		return 1
+	}
+
+	if exponent < 0 {
+		return 1 / BinPow(base, -exponent)
+	}
+
+	result := 1.0
 	for exponent > 0 {
 		if exponent%2 == 1 { // Проверяем, является ли текущий показатель степени нечетным.
 			result *= base // Если нечетный, умножаем текущий результат на основание.
@@ -36,13 +44,13 @@ func BinPow(base, exponent int) int {
 }
 
 // Пример функции для выполнения возведения числа в степень методом быстрого возведения в степень.
-func ExecuteBinPow(base, exponent int) {
+func ExecuteBinPow(base float64, exponent int) {
 	start := time.Now()
 	result := BinPow(base, exponent)
 	duration := time.Since(start)
 
 	fmt.Printf("1. Время выполнения: %v\n", duration)
-	fmt.Printf("2. Результат возведения числа %d в %d-ую в степень: %d\n", base, exponent, result)
+	fmt.Printf("2. Результат возведения числа %f в %d-ую в степень: %f\n", base, exponent, result)
 }
 
 /*

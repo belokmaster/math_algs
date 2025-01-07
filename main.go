@@ -45,7 +45,6 @@ func readPolynomialInput(prompt string) ([]int, error) {
 	return coeffs, nil
 }
 
-/*
 // Функция для чтения вещественного числа с ввода
 func readFloatInput(prompt string) (float64, error) {
 	reader := bufio.NewReader(os.Stdin)
@@ -60,7 +59,6 @@ func readFloatInput(prompt string) (float64, error) {
 
 	return f, nil
 }
-*/
 
 // Функция для чтения строки ввода
 func readStringInput(prompt string) (string, error) {
@@ -124,6 +122,14 @@ func main() {
 		}
 		// Выполнение алгоритма "итерационная формула Герона"
 		ceil_algs.ExecuteHeronSqrt(n)
+	case "4.1":
+		n, err = readIntInput("Введите значение для n: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма вычисления квадратного корня через бинарный поиск
+		ceil_algs.ExecuteMySqrt(n)
 	case "5":
 		num1, err := readStringInput("Введите первое число: ")
 		if err != nil {
@@ -246,7 +252,7 @@ func main() {
 		// Выполнение алгоритма "возведения числа в натуральную степень"
 		ceil_algs.ExecutePow(num1, num2)
 	case "12":
-		num1, err := readIntInput("Введите число для возведения в степень: ")
+		num1, err := readFloatInput("Введите число для возведения в степень: ")
 		if err != nil {
 			fmt.Println(err)
 			return
@@ -257,7 +263,7 @@ func main() {
 			return
 		}
 		// Выполнение алгоритма "возведения числа в степень методом быстрого возведения в степень"
-		ceil_algs.ExecutePow(num1, num2)
+		ceil_algs.ExecuteBinPow(num1, num2)
 	case "13":
 		num1, err := readIntInput("Введите первое число: ")
 		if err != nil {
