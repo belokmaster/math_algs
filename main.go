@@ -391,5 +391,13 @@ func main() {
 		}
 		// Выполнение алгоритма умножения двух полиномов
 		ceil_algs.ExecuteDividePolynomials(a, b)
+	case "22":
+		pol, err := readPolynomialInput("Введите полином: ")
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// Выполнение алгоритма разложения многочлена на множители свободные от квадратов
+		ceil_algs.ExecuteFactorizeFreeFromSquares(pol)
 	}
 }
