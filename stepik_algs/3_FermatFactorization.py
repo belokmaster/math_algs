@@ -20,6 +20,7 @@ def FermatFactorization(n):
     # Возвращаем найденные множители, которые являются (x - y) и (x + y).
     return [x - y, x + y]
 
+
 n = int(input())
 arr = FermatFactorization(n)
 print(min(arr), max(arr))

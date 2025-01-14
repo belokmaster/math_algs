@@ -1,9 +1,3 @@
-def gcd(a, b):
-    while b:
-        a, b = b, a % b
-    return a
-
-
 def phi(n):
     result = n
     p = 2
