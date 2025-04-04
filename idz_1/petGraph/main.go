@@ -22,23 +22,8 @@ func shuffle(slice []int64) {
 func printAdjacencyMatrix(g *simple.DirectedGraph, numNodes int) {
 	fmt.Println("\nМатрица смежности:")
 
-	// Печатаем заголовок с номерами вершин
-	fmt.Print("    ")
-	for i := 0; i < numNodes; i++ {
-		fmt.Printf("%d ", i)
-	}
-	fmt.Println()
-
-	// Печатаем разделительную линию
-	fmt.Print("   ")
-	for i := 0; i < numNodes; i++ {
-		fmt.Print("--")
-	}
-	fmt.Println()
-
 	// Печатаем саму матрицу
 	for i := 0; i < numNodes; i++ {
-		fmt.Printf("%d | ", i)
 		for j := 0; j < numNodes; j++ {
 			if g.HasEdgeFromTo(int64(i), int64(j)) {
 				fmt.Print("1 ")
@@ -57,23 +42,8 @@ func saveAdjacencyMatrixToFile(g *simple.DirectedGraph, numNodes int, filename s
 	}
 	defer file.Close()
 
-	// Записываем заголовок
-	fmt.Fprint(file, "    ")
-	for i := 0; i < numNodes; i++ {
-		fmt.Fprintf(file, "%d ", i)
-	}
-	fmt.Fprintln(file)
-
-	// Записываем разделительную линию
-	fmt.Fprint(file, "   ")
-	for i := 0; i < numNodes; i++ {
-		fmt.Fprint(file, "--")
-	}
-	fmt.Fprintln(file)
-
 	// Записываем саму матрицу
 	for i := 0; i < numNodes; i++ {
-		fmt.Fprintf(file, "%d | ", i)
 		for j := 0; j < numNodes; j++ {
 			if g.HasEdgeFromTo(int64(i), int64(j)) {
 				fmt.Fprint(file, "1 ")
